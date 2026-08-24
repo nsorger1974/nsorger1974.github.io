@@ -49,7 +49,7 @@ Both post to the same endpoint, so each carries a hidden `_subject` field that s
 the email subject line:
 
 - Interest list → "Certain Latitude — interest list"
-- Session sign-up → "Zoom link — Morocco info session, August 30"
+- Session sign-up → "Zoom link — Morocco info session, September 15"
 
 Filter or label on those in Gmail and the two streams stay separate. If you would
 rather have them fully separate, create a second form in Formspree and swap the
@@ -119,7 +119,7 @@ be added to those pages the same way as on Morocco. The globes can stay in the h
 ## The information session
 
 The home page and the Morocco page both carry a panel announcing the Zoom session on
-Sunday, August 30 at 5:00 PM Pacific, with a short sign-up form. Search either page
+Tuesday, September 15 at 5:00 PM Pacific, with a short sign-up form. Search either page
 for `id="session"` to find it. The two copies are identical — edit both.
 
 Like the main interest form, it opens the visitor's email app with a message ready
@@ -127,7 +127,7 @@ to send to certainlatitude@gmail.com — so sign-ups arrive as ordinary emails.
 
 **After the session, delete this block from both pages**, or the site will keep
 advertising a date that has passed. Remove the whole `<section ... id="session">`
-element and the "Info session · Aug 30" button in each hero.
+element and the "Info session · Sept 13" button in each hero.
 
 ## Pricing and inclusions
 
@@ -137,8 +137,8 @@ page. If the terms change, edit both.
 
 Morocco pricing and terms live in a dedicated section on the Morocco page — search
 for `id="booking"`. In short: $3,900 for the 7-day option, $4,500 for the 9-day, both
-double occupancy; $1,000 single supplement; $750 deposit due October 15, 2026;
-balance January 6, 2027; fully refundable through December 1, 2026 and
+double occupancy; $1,000 single supplement; $750 deposit due November 1, 2026;
+balance January 15, 2027; fully refundable through December 1, 2026 and
 non-refundable after.
 
 Shorter versions of the same facts appear in the About page FAQ (three separate
