@@ -157,8 +157,11 @@ p{ margin:0 0 1.1em; }
 }
 .hero__photo img{ position:relative; z-index:1; width:100%; height:auto; display:block; }
 @media(max-width:899px){
-  .hero__photo{ max-width:340px; }
+  .hero__photo{ max-width:340px; margin-bottom:var(--s4); }
   .hero__photo::before{ inset:11px -11px -11px 11px; }
+  /* on a phone the picture leads; the words follow */
+  .hero__split{ display:flex; flex-direction:column; }
+  .hero__split > .hero__photo{ order:-1; }
 }
 .hero h1 em{ font-style:italic; color:var(--cobalt); }
 .coord{
@@ -1038,7 +1041,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
     <div class="grid2 grid2--lead">
       <div class="rv">
         <p class="eyebrow">The interest list</p>
-        <h2>What other destinations would make your heart sing?</h2>
+        <h2>Where else would you like to explore? Tell us which other destinations would make your heart sing.</h2>
       </div>
       <form class="form rv" data-fs-form action="https://formspree.io/f/mvkplkdq" method="POST">
         <div class="field"><label for="f-name">Name</label>

@@ -157,8 +157,11 @@ p{ margin:0 0 1.1em; }
 }
 .hero__photo img{ position:relative; z-index:1; width:100%; height:auto; display:block; }
 @media(max-width:899px){
-  .hero__photo{ max-width:340px; }
+  .hero__photo{ max-width:340px; margin-bottom:var(--s4); }
   .hero__photo::before{ inset:11px -11px -11px 11px; }
+  /* on a phone the picture leads; the words follow */
+  .hero__split{ display:flex; flex-direction:column; }
+  .hero__split > .hero__photo{ order:-1; }
 }
 .hero h1 em{ font-style:italic; color:var(--cobalt); }
 .coord{
@@ -537,7 +540,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         <p class="lede">Latitude demarcates our place in the world. It is also the room we give ourselves, and in our next act, we have earned it in spades!</p>
         <p>As our children have grown up, our daily lives are more flexible, and we have more space to consider what we want for this next chapter in our lives. With the clarity and wisdom of poet Mary Oliver, we can ask ourselves: <em>&ldquo;What is it you plan to do with your one wild and precious life?&rdquo;</em></p>
         <p>Certain Latitude is designed for women like us as we dive into this juncture in our lives. We crave adventure. Freedom. Connection. A change of pace. Fresh scenery. New people &amp; stories to share.</p>
-        <p>So let&rsquo;s DO this. Now it&rsquo;s our turn. We&rsquo;ve got the latitude to venture out and explore the world &mdash; to widen our perspectives, stretch our minds and expand our world views. What are you waiting for? Join in the fun!</p>
+        <p>So now, it&rsquo;s our turn. We&rsquo;ve got the latitude to venture out and explore the world &mdash; to widen our perspectives, stretch our minds and expand our world views. What are you waiting for? Join in the fun!</p>
         <p class="watch"><span>Worth twelve minutes</span><a href="https://youtu.be/E7yePfnLKCU" target="_blank" rel="noopener">Jane Fonda on the Third Act &mdash; her TED Talk &rarr;</a></p>
       </div>
     </div>
@@ -553,12 +556,12 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         <p class="lede" style="color:rgba(169,205,232,.9);margin-top:1.1rem">Our itineraries are personally vetted to ensure we are staying in accommodations that are comfortable but not fancy, always centrally situated and full of local flair, and days built at a pace you can actually enjoy.</p>
       </div>
       <ul class="checks checks--ink rv" style="font-size:1.02rem">
-        <li><strong>10&ndash;14 travelers, ages 45&ndash;65.</strong> Small enough that a dinner table is still one conversation.</li>
-        <li><strong>We sleep inside the old cities.</strong> Riads and small hotels within walking distance of the good part.</li>
-        <li><strong>No drive longer than four hours</strong>, and rail wherever it beats the road.</li>
-        <li><strong>Afternoons with nothing in them.</strong> Wandering is an activity. So is a nap.</li>
-        <li><strong>We eat where the neighborhood eats</strong> &mdash; and we ask first about what you can&rsquo;t.</li>
-        <li><strong>Solo is the norm.</strong> Most travelers come on their own. Nobody gets seated alone.</li>
+        <li><strong>10&ndash;14 travelers, ages 45&ndash;65.</strong> A cozy group that fits around one long dining table for shared conversations.</li>
+        <li><strong>We sleep inside the old cities</strong>, with a focus on small family-owned hotels that feel like part of the neighborhood rather than fancy international chains.</li>
+        <li><strong>Our time on the road</strong> will not exceed four hours on a single day, and will take advantage of high speed rail where available.</li>
+        <li><strong>Daily agendas</strong> with flexibility to either get more steps or sit and enjoy an afternoon coffee and pastry.</li>
+        <li><strong>We will dine</strong> in vetted restaurants with local specialties and accommodations for all dietary needs.</li>
+        <li><strong>Most travelers</strong> will come on their own, but do invite friends to join us too!</li>
       </ul>
     </div>
   </div>
@@ -575,17 +578,17 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
           <a href="mailto:certainlatitude@gmail.com" style="text-decoration:none">certainlatitude@gmail.com</a>
         </p>
         <figure class="portrait" style="margin-top:var(--s4)">
-          <img src="images/nicole-sorger.jpg"
-               srcset="images/nicole-sorger.jpg 900w, images/nicole-sorger@2x.jpg 1400w"
+          <img src="images/nicole-dubrovnik.jpg"
+               srcset="images/nicole-dubrovnik.jpg 900w, images/nicole-dubrovnik@2x.jpg 1400w"
                sizes="(min-width:900px) 40vw, 90vw"
                width="900" height="1125" loading="lazy" decoding="async"
-               alt="Nicole Sorger, founder of Certain Latitude">
+               alt="Nicole Sorger on the old city walls above the sea, framed by stone">
         </figure>
       </div>
       <div class="rv measure">
         <p class="lede">Nicole is a world traveler and writer with more than two decades of experience teaching global history &mdash; and a lifetime of exploring that history firsthand across dozens of countries.</p>
-        <p>She founded Certain Latitude to synthesize her passions: for the transformative power of travel, the ways history shapes our understanding of modern culture, and the deep connections women forge when they experience the world side by side.</p>
-        <p>Nicole curates these trips like she would her own &mdash; focusing on connection with local culture, days filled with exploration, long walks and leisure, staying in small family-run hotels with local flair, and enjoying flavorful and delicious meals around large tables where stories are shared and memories are made.</p>
+        <p>Certain Latitude is a natural blend of Nicole&rsquo;s passions: for the transformative power of travel, the ways history shapes our understanding of modern culture, and the deep connections women forge when they experience the world side by side.</p>
+        <p>Nicole curates these trips like she would her own &mdash; focusing on connection with local culture, days filled with exploration, long walks and leisure, staying in small family-run hotels with genuine local character, and enjoying flavorful and delicious meals around large tables where stories are shared and memories are made.</p>
         <p>Morocco in March 2027 is the first. Argentina follows in 2028, Uzbekistan in 2029. If any of that strikes a chord, drop a note to Nicole <a href="mailto:certainlatitude@gmail.com">here</a>, or <a href="#join">sign up on an interest list</a> for more information.</p>
       </div>
     </div>
@@ -610,7 +613,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         <button class="day__btn" type="button"><span class="day__no">02</span>
           <span><span class="day__title">I&rsquo;d be traveling on my own. Is that awkward?</span></span><span class="day__sign" aria-hidden="true">+</span></button>
         <div class="day__panel"><div class="day__body">
-          <p>It is the standard, not the exception. The group is capped at fourteen precisely so that solo travelers are never on the edge of it. Meals are together unless you would rather they weren&rsquo;t, and there is enough unscheduled time that you can have an afternoon entirely to yourself without anyone taking it personally.</p>
+          <p>Come solo, or bring a friend &mdash; and know that new friends await. The group is capped at fourteen precisely so that no one is ever on the edge of it. Meals are together unless you would rather they weren&rsquo;t, and there is enough unscheduled time that you can have an afternoon entirely to yourself without anyone taking it personally.</p>
         </div></div>
       </article>
       <article class="day">
@@ -670,7 +673,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
     <div class="grid2 grid2--lead">
       <div class="rv">
         <p class="eyebrow">The interest list</p>
-        <h2>What other destinations would make your heart sing?</h2>
+        <h2>Where else would you like to explore? Tell us which other destinations would make your heart sing.</h2>
       </div>
       <form class="form rv" data-fs-form action="https://formspree.io/f/mvkplkdq" method="POST">
         <div class="field"><label for="f-name">Name</label>

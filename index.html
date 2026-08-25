@@ -157,8 +157,11 @@ p{ margin:0 0 1.1em; }
 }
 .hero__photo img{ position:relative; z-index:1; width:100%; height:auto; display:block; }
 @media(max-width:899px){
-  .hero__photo{ max-width:340px; }
+  .hero__photo{ max-width:340px; margin-bottom:var(--s4); }
   .hero__photo::before{ inset:11px -11px -11px 11px; }
+  /* on a phone the picture leads; the words follow */
+  .hero__split{ display:flex; flex-direction:column; }
+  .hero__split > .hero__photo{ order:-1; }
 }
 .hero h1 em{ font-style:italic; color:var(--cobalt); }
 .coord{
@@ -516,7 +519,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
           <b>Certain Latitude</b><span>&#9670;</span><span>First journey, March 2027</span>
         </p>
         <h1>You&rsquo;ve earned the latitude.<br><em>Now use it.</em></h1>
-        <p class="lede measure" style="margin-top:1.6rem">Small-group journeys for women embarking upon our next act &mdash; ten to fourteen of us, carefully curated destinations, unhurried days. Bring your stories to share with those we meet along the way, and come home bursting with new perspectives to broaden your world view.</p>
+        <p class="lede measure" style="margin-top:1.6rem">Certain Latitude is a travel company designed for women embarking upon our next act who seek adventure travel in small groups of 10&ndash;14 with carefully curated itineraries, and a focus on awe and wonder, with unhurried days. Bring your stories to share with those we meet along the way, and come home bursting with new perspectives to broaden your world view.</p>
         <div class="btns">
           <a class="btn btn--brass" href="morocco.html">See Morocco, March 2027</a>
           <a class="btn btn--ghost" href="#journeys">Upcoming journeys</a>
@@ -553,8 +556,9 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
             <h2 style="max-width:18ch">Designed for your next act</h2>
           </div>
           <div class="measure">
-            <p class="lede">Certain Latitude is a travel company created for women embarking upon our next act &mdash; a season of freedom, curiosity, and possibility. Our best adventures are still ahead of us, and will be even more fabulous in the company of women who understand exactly what this chapter of life can hold.</p>
-            <p>Join us to connect with new cultures, discover awe-inspiring destinations, and bond with one another as we explore new corners of the world together.</p>
+            <p class="lede">Certain Latitude is a travel company created for women embarking upon our next act &mdash; a season of freedom, curiosity, and possibility. While it&rsquo;s already been a wild ride, our best adventures are yet to come with women who share our zest for life and crave the magic of exploring new places.</p>
+            <p>While we may not be clubbing like the 20-somethings, we can enjoy nights out with deliciously long conversations over dinner, toasting our newly expanding latitude to explore the world!</p>
+            <p>Join us to experience cultures that stir our hearts and open our eyes, discover awe-inspiring destinations, and bond with one another as we explore new corners of the world together.</p>
             <p><a href="about.html" class="mono" style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase">How we travel &rarr;</a></p>
           </div>
         </div>
@@ -568,12 +572,12 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
           </div>
           <div class="measure">
             <p class="lede">Each Certain Latitude journey brings together a group of 10&ndash;14 women, ages 45&ndash;65, who are ready for adventure.</p>
-            <p>Our itineraries blend thoughtfully structured time together &mdash; shared meals, guided experiences, and cultural immersion &mdash; with unstructured time to wander, explore, and follow your own curiosity.</p>
+            <p>Our itineraries blend thoughtfully structured time together &mdash; shared meals, guided experiences, and cultural immersion &mdash; with unstructured time to wander through the storied old cities and get lost in conversation.</p>
             <ul class="checks" style="margin-top:1.6rem">
-              <li>10&ndash;14 travelers, ages 45&ndash;65</li>
-              <li>Shared meals and guided days</li>
-              <li>Afternoons left open on purpose</li>
-              <li>Solo travelers are the norm here</li>
+              <li>10&ndash;14 travelers, roughly ages 45&ndash;65</li>
+              <li>Shared meals and curated daily highlights</li>
+              <li>Each day filled with a joyful mix of activity and rest</li>
+              <li>Sit together on the road or rail and connect with new friends</li>
             </ul>
           </div>
         </div>
@@ -598,7 +602,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
           </div>
           <div class="measure">
             <p class="lede">Nicole is a world traveler and writer with more than two decades of experience teaching global history &mdash; and a lifetime of exploring that history firsthand across dozens of countries.</p>
-            <p>She founded Certain Latitude to synthesize her passions: for the transformative power of travel, the ways history shapes our understanding of modern culture, and the deep connections women forge when they experience the world side by side.</p>
+            <p>Certain Latitude is a natural blend of Nicole&rsquo;s passions: for the transformative power of travel, the ways history shapes our understanding of modern culture, and the deep connections women forge when they experience the world side by side.</p>
           </div>
         </div>
       </div>
@@ -732,12 +736,12 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         <p class="lede" style="color:rgba(169,205,232,.9);margin-top:1.1rem">Our itineraries are personally vetted to ensure we are staying in accommodations that are comfortable but not fancy, always centrally situated and full of local flair, and days built at a pace you can actually enjoy.</p>
       </div>
       <ul class="checks checks--ink rv" style="font-size:1.02rem">
-        <li>10&ndash;14 travelers, ages 45&ndash;65. One table, one conversation.</li>
-        <li>We sleep inside the old cities &mdash; riads, not ring roads.</li>
-        <li>No drive longer than four hours, and rail wherever it beats the road.</li>
-        <li>Afternoons with nothing in them. Wandering is an activity.</li>
-        <li>We eat where the neighborhood eats, and we ask first about what you can&rsquo;t.</li>
-        <li>Solo is the norm here, not the exception. Nobody gets seated alone.</li>
+        <li><strong>10&ndash;14 travelers, ages 45&ndash;65.</strong> A cozy group that fits around one long dining table for shared conversations.</li>
+        <li><strong>We sleep inside the old cities</strong>, with a focus on small family-owned hotels that feel like part of the neighborhood rather than fancy international chains.</li>
+        <li><strong>Our time on the road</strong> will not exceed four hours on a single day, and will take advantage of high speed rail where available.</li>
+        <li><strong>Daily agendas</strong> with flexibility to either get more steps or sit and enjoy an afternoon coffee and pastry.</li>
+        <li><strong>We will dine</strong> in vetted restaurants with local specialties and accommodations for all dietary needs.</li>
+        <li><strong>Most travelers</strong> will come on their own, but do invite friends to join us too!</li>
       </ul>
     </div>
   </div>
@@ -748,7 +752,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
     <div class="grid2 grid2--lead">
       <div class="rv">
         <p class="eyebrow">The interest list</p>
-        <h2>What other destinations would make your heart sing?</h2>
+        <h2>Where else would you like to explore? Tell us which other destinations would make your heart sing.</h2>
       </div>
       <form class="form rv" data-fs-form action="https://formspree.io/f/mvkplkdq" method="POST">
         <div class="field"><label for="f-name">Name</label>
