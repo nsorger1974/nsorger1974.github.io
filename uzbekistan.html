@@ -493,6 +493,19 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
 }
 .watch a{ font-size:1rem; text-decoration-thickness:1px; text-underline-offset:3px; }
 
+/* ---------- mobile: lead with the gallery on the Morocco page ----------
+   Scoped to .main--morocco specifically, so no other page's <main> is
+   converted to flex (block-flow margin behaviour differs from flex-flow,
+   and this keeps that change contained to one page). */
+@media(max-width:899px){
+  .main--morocco{ display:flex; flex-direction:column; }
+  .main--morocco #gallery{
+    order:-1;
+    padding-block:var(--s4) var(--s3);
+  }
+  .main--morocco #gallery .eyebrow{ display:none; }   /* redundant once it opens the page */
+}
+
 </style>
 </head>
 <body>
@@ -509,7 +522,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
     </nav>
   </div>
 </header>
-<main id="main">
+<main id="main" class="main--uzbekistan">
 <section class="creed">
   <div class="creed__tile" aria-hidden="true"></div>
   <div class="shell creed__in">

@@ -493,6 +493,19 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
 }
 .watch a{ font-size:1rem; text-decoration-thickness:1px; text-underline-offset:3px; }
 
+/* ---------- mobile: lead with the gallery on the Morocco page ----------
+   Scoped to .main--morocco specifically, so no other page's <main> is
+   converted to flex (block-flow margin behaviour differs from flex-flow,
+   and this keeps that change contained to one page). */
+@media(max-width:899px){
+  .main--morocco{ display:flex; flex-direction:column; }
+  .main--morocco #gallery{
+    order:-1;
+    padding-block:var(--s4) var(--s3);
+  }
+  .main--morocco #gallery .eyebrow{ display:none; }   /* redundant once it opens the page */
+}
+
 </style>
 </head>
 <body>
@@ -509,7 +522,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
     </nav>
   </div>
 </header>
-<main id="main">
+<main id="main" class="main--index">
 <section class="hero">
   <div class="hero__tile" aria-hidden="true"></div>
   <div class="shell hero__in">
@@ -519,7 +532,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
           <b>Certain Latitude</b><span>&#9670;</span><span>First journey, March 2027</span>
         </p>
         <h1>You&rsquo;ve earned the latitude.<br><em>Now use it.</em></h1>
-        <p class="lede measure" style="margin-top:1.6rem">Welcome to Certain Latitude! We curate global adventures for women who crave the wonder and awe of travel. Bring your stories to share with those we meet along the way, and come home bursting with new perspectives to broaden your world view.</p>
+        <p class="lede measure" style="margin-top:1.6rem">Welcome to Certain Latitude. We curate global adventures for women who crave the wonder and awe of travel. Bring your stories to share with those we meet along the way, and come home bursting with new perspectives to broaden your world view.</p>
         <div class="btns">
           <a class="btn btn--brass" href="morocco.html">See Morocco, March 2027</a>
           <a class="btn btn--ghost" href="#journeys">Upcoming journeys</a>
@@ -557,7 +570,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
           </div>
           <div class="measure">
             <p class="lede">We are a travel company dedicated to women embarking upon our next act &mdash; a season of freedom, curiosity, and possibility. While it&rsquo;s already been a wild ride, our best adventures are yet to come with women who share our zest for life and crave the magic of exploring new places.</p>
-            <p>While we may not be clubbing like the 20-somethings, we can enjoy nights out with deliciously long conversations over dinner, toasting our newly expanding latitude to explore the world!</p>
+            <p>While we may not be clubbing like the 20-somethings, we can enjoy nights out with deliciously long conversations over dinner, toasting our newly expanding latitude to explore the world.</p>
             <p>Join us to experience new destinations that open up our hearts as we connect with one another and stretch our minds together.</p>
             <p><a href="about.html" class="mono" style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase">How we travel &rarr;</a></p>
           </div>
@@ -696,9 +709,9 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
       <p class="lede measure" style="margin-top:1.1rem">We open in Tangier during the Eid al-Fitr holidays, when the medina is at its most festive, and twelve days later delight in the aromatic wonders of street food chefs in the storied Jemaa el-Fna. In between: the blue city, the oldest university in the world, a cedar forest full of macaques, and copious amounts of sweet Moroccan mint tea.</p>
     </div>
     <dl class="facts rv">
-      <div class="fact"><dt>Dates</dt><dd>Mar 7&ndash;18<small>Or a 7-day option ending March 16</small></dd></div>
+      <div class="fact"><dt>Dates</dt><dd>Mar 7&ndash;18<small>Alt 7-Day option ends 3/16</small></dd></div>
       <div class="fact"><dt>Cities</dt><dd>Six<small>Plus a night in Paris en route</small></dd></div>
-      <div class="fact"><dt>Group</dt><dd>10&ndash;14<small>Ages 45&ndash;65 &middot; solo travelers welcome</small></dd></div>
+      <div class="fact"><dt>Group</dt><dd>10&ndash;14<small>Ages 45&ndash;65</small></dd></div>
       <div class="fact"><dt>Longest drive</dt><dd>4 hours<small>Two legs by first-class rail</small></dd></div>
       <div class="fact"><dt>Pace</dt><dd>Walkable<small>Gentle hikes, no boots required</small></dd></div>
     </dl>
@@ -712,7 +725,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
       <div>
         <p class="eyebrow eyebrow--plain">Information session &middot; on Zoom</p>
         <h3>Tuesday, September 15 &middot; 5:00 PM Pacific</h3>
-        <p>An hour with Nicole to walk through the itinerary day by day, compare the 7- and 9-day options, talk through costs and what&rsquo;s included, and answer whatever you want to ask. Come with questions.</p>
+        <p>An hour with Nicole to walk through the itinerary day by day, compare the 7- and 9-day options, talk through costs and what&rsquo;s included, and answer any questions you may have.</p>
         <p class="session__note">Leave your name and email and we&rsquo;ll send you the Zoom link and a reminder the day before.</p>
       </div>
       <form class="session__form" data-fs-form action="https://formspree.io/f/mvkplkdq" method="POST">
@@ -740,7 +753,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         <li><strong>We sleep inside the old cities</strong>, with a focus on small family-owned hotels that feel like part of the neighborhood rather than fancy international chains.</li>
         <li><strong>Our time on the road</strong> will not exceed four hours on a single day, and will take advantage of high speed rail where available.</li>
         <li><strong>Daily agendas</strong> with flexibility to either get more steps or sit and enjoy an afternoon coffee and pastry.</li>
-        <li><strong>We will dine</strong> in vetted restaurants with local specialties and accommodations for all dietary needs.</li>
+        <li><strong>We will dine</strong> in carefully chosen restaurants with local specialties and accommodations for all dietary needs.</li>
         <li><strong>Most travelers</strong> will come on their own, but do invite friends to join us too!</li>
       </ul>
     </div>

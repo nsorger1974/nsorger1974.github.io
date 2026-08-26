@@ -493,6 +493,19 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
 }
 .watch a{ font-size:1rem; text-decoration-thickness:1px; text-underline-offset:3px; }
 
+/* ---------- mobile: lead with the gallery on the Morocco page ----------
+   Scoped to .main--morocco specifically, so no other page's <main> is
+   converted to flex (block-flow margin behaviour differs from flex-flow,
+   and this keeps that change contained to one page). */
+@media(max-width:899px){
+  .main--morocco{ display:flex; flex-direction:column; }
+  .main--morocco #gallery{
+    order:-1;
+    padding-block:var(--s4) var(--s3);
+  }
+  .main--morocco #gallery .eyebrow{ display:none; }   /* redundant once it opens the page */
+}
+
 </style>
 </head>
 <body>
@@ -509,7 +522,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
     </nav>
   </div>
 </header>
-<main id="main">
+<main id="main" class="main--about">
 <section class="hero" style="padding-block:var(--s6) var(--s4)">
   <div class="hero__tile" aria-hidden="true"></div>
   <div class="shell hero__in">
@@ -537,7 +550,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         </figure>
       </div>
       <div class="rv measure">
-        <p class="lede">Latitude demarcates our place in the world. It is also the room we give ourselves, and in our next act, we have earned it in spades!</p>
+        <p class="lede">Latitude demarcates our place in the world. It is also the room we give ourselves, and in our next act, we have earned it in spades.</p>
         <p>As our children have grown up, our daily lives are more flexible, and we have more space to consider what we want for this next chapter in our lives. With the clarity and wisdom of poet Mary Oliver, we can ask ourselves: <em>&ldquo;What is it you plan to do with your one wild and precious life?&rdquo;</em></p>
         <p>Certain Latitude is designed for women like us as we dive into this juncture in our lives. We crave adventure. Freedom. Connection. A change of pace. Fresh scenery. New people &amp; stories to share.</p>
         <p>So now, it&rsquo;s our turn. We&rsquo;ve got the latitude to venture out and explore the world &mdash; to widen our perspectives, stretch our minds and expand our world views. What are you waiting for? Join in the fun!</p>
@@ -560,7 +573,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         <li><strong>We sleep inside the old cities</strong>, with a focus on small family-owned hotels that feel like part of the neighborhood rather than fancy international chains.</li>
         <li><strong>Our time on the road</strong> will not exceed four hours on a single day, and will take advantage of high speed rail where available.</li>
         <li><strong>Daily agendas</strong> with flexibility to either get more steps or sit and enjoy an afternoon coffee and pastry.</li>
-        <li><strong>We will dine</strong> in vetted restaurants with local specialties and accommodations for all dietary needs.</li>
+        <li><strong>We will dine</strong> in carefully chosen restaurants with local specialties and accommodations for all dietary needs.</li>
         <li><strong>Most travelers</strong> will come on their own, but do invite friends to join us too!</li>
       </ul>
     </div>
@@ -589,6 +602,8 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         <p class="lede">Nicole is a world traveler and writer with more than two decades of experience teaching global history &mdash; and a lifetime of exploring that history firsthand across dozens of countries.</p>
         <p>Certain Latitude is a natural blend of Nicole&rsquo;s passions: for the transformative power of travel, the ways history shapes our understanding of modern culture, and the deep connections women forge when they experience the world side by side.</p>
         <p>Nicole curates these trips like she would her own &mdash; focusing on connection with local culture, days filled with exploration, long walks and leisure, staying in small family-run hotels with genuine local character, and enjoying flavorful and delicious meals around large tables where stories are shared and memories are made.</p>
+        <p>Starting with a semester abroad in college, Nicole&rsquo;s connection with Morocco was reignited when she created an original coexistence tour for students in 2015. She went on to modify the itinerary after an independent scouting trip, in which she added more cities into the mix, in addition to a partnership with a local school. She went on to lead student trips to Morocco in 2017 and 2019, making wonderful connections along the way.</p>
+        <p>After Nicole&rsquo;s recent sabbatical year living in Berlin, she fell back in love with the art of travel, planning all of the details with a particular eye towards local history and culture. Traveling to new destinations each month felt like a new beginning, and a reminder of the beauty of exploring fresh destinations and connecting with people along the way. You can read her blog posts about her life-changing year of travel at <a href="https://www.nicolesorger.com" target="_blank" rel="noopener">nicolesorger.com</a>.</p>
         <p>Morocco in March 2027 is the first. Argentina follows in 2028, Uzbekistan in 2029. If any of that strikes a chord, drop a note to Nicole <a href="mailto:certainlatitude@gmail.com">here</a>, or <a href="#join">sign up on an interest list</a> for more information.</p>
       </div>
     </div>
@@ -599,7 +614,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
   <div class="shell">
     <div class="rv" style="margin-bottom:var(--s4)">
       <p class="eyebrow">Questions we get</p>
-      <h2>Before you ask</h2>
+      <h2>FAQs</h2>
     </div>
     <div class="days rv">
       <article class="day">
@@ -611,20 +626,13 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
       </article>
       <article class="day">
         <button class="day__btn" type="button"><span class="day__no">02</span>
-          <span><span class="day__title">I&rsquo;d be traveling on my own. Is that awkward?</span></span><span class="day__sign" aria-hidden="true">+</span></button>
-        <div class="day__panel"><div class="day__body">
-          <p>Come solo, or bring a friend &mdash; and know that new friends await. The group is capped at fourteen precisely so that no one is ever on the edge of it. Meals are together unless you would rather they weren&rsquo;t, and there is enough unscheduled time that you can have an afternoon entirely to yourself without anyone taking it personally.</p>
-        </div></div>
-      </article>
-      <article class="day">
-        <button class="day__btn" type="button"><span class="day__no">03</span>
           <span><span class="day__title">How fit do I need to be?</span></span><span class="day__sign" aria-hidden="true">+</span></button>
         <div class="day__panel"><div class="day__body">
           <p>Comfortable walking is the requirement. Medinas are cobbled, occasionally stepped, and best seen on foot &mdash; expect two to four miles across a full day, broken up by sitting down and eating. The hikes are gentle to moderate on forest tracks; sneakers are fine and hiking boots are not required. Pace can be adjusted for the group, and there is no shame in taking an afternoon off. If you have a specific concern &mdash; knees, altitude, heat &mdash; write and ask. We will tell you honestly whether a given trip suits.</p>
         </div></div>
       </article>
       <article class="day">
-        <button class="day__btn" type="button"><span class="day__no">04</span>
+        <button class="day__btn" type="button"><span class="day__no">03</span>
           <span><span class="day__title">Rooms, and sharing</span></span><span class="day__sign" aria-hidden="true">+</span></button>
         <div class="day__panel"><div class="day__body">
           <p>Prices are based on two travelers sharing. A room of your own is a $1,000 single supplement. The norm is coming solo and sharing a room; we&rsquo;ll match you up with a roommate for the trip unless you prefer otherwise.</p>
@@ -632,7 +640,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         </div></div>
       </article>
       <article class="day">
-        <button class="day__btn" type="button"><span class="day__no">05</span>
+        <button class="day__btn" type="button"><span class="day__no">04</span>
           <span><span class="day__title">What&rsquo;s included, and what isn&rsquo;t</span></span><span class="day__sign" aria-hidden="true">+</span></button>
         <div class="day__panel"><div class="day__body">
           <p><strong>Included:</strong> all hotels, meals, domestic travel, guides, tips and entrance fees.</p>
@@ -642,14 +650,14 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         </div></div>
       </article>
       <article class="day">
-        <button class="day__btn" type="button"><span class="day__no">06</span>
+        <button class="day__btn" type="button"><span class="day__no">05</span>
           <span><span class="day__title">Food preferences and dietary needs</span></span><span class="day__sign" aria-hidden="true">+</span></button>
         <div class="day__panel"><div class="day__body">
           <p>Just make a note of any dietary needs when you sign up, and we&rsquo;ll let the restaurants know in advance. Vegetarian, dairy-free, gluten-free and kosher style are all available options.</p>
         </div></div>
       </article>
       <article class="day">
-        <button class="day__btn" type="button"><span class="day__no">07</span>
+        <button class="day__btn" type="button"><span class="day__no">06</span>
           <span><span class="day__title">What if I have to cancel?</span></span><span class="day__sign" aria-hidden="true">+</span></button>
         <div class="day__panel"><div class="day__body">
           <p>For Morocco: cancel in writing on or before <strong>December 1, 2026</strong> and everything you have paid is refunded in full. After that date, payments are non-refundable &mdash; which is what travel insurance is for, and why we require it. This does not apply if we cancel; see below.</p>
@@ -657,7 +665,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         </div></div>
       </article>
       <article class="day">
-        <button class="day__btn" type="button"><span class="day__no">08</span>
+        <button class="day__btn" type="button"><span class="day__no">07</span>
           <span><span class="day__title">How do I hold a place?</span></span><span class="day__sign" aria-hidden="true">+</span></button>
         <div class="day__panel"><div class="day__body">
           <p>Join the interest list. When the group opens, list members are offered places first and in order &mdash; there are only fourteen, and the first trip is likely to fill from the list alone. Joining commits you to nothing.</p>
