@@ -474,26 +474,6 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
 }
 
 
-/* ---------- information session ---------- */
-.session{
-  background:var(--white); border:1px solid var(--sky); border-top:3px solid var(--brass);
-  padding:var(--s4); display:grid; gap:var(--s4); grid-template-columns:1fr;
-}
-@media(min-width:900px){
-  .session{ grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr); gap:var(--s6); align-items:start; }
-}
-.session h3{ margin:.2rem 0 .9rem; }
-.session p{ color:var(--ink-70); margin:0 0 .9rem; }
-.session__note{ font-size:.95rem; }
-.session__form{ display:grid; gap:.7rem; align-content:start; }
-.session__form input{
-  font:inherit; font-size:1rem; color:var(--ink); background:var(--paper);
-  border:1px solid var(--sky); padding:.8rem .9rem; border-radius:0;
-}
-.session__form input::placeholder{ color:var(--ink-45); }
-.session__form .btn{ justify-content:center; }
-.session__status{ font-size:.88rem; color:var(--cobalt); margin:0; }
-
 
 /* ---------- inline "worth watching" link ---------- */
 .watch{ margin-top:var(--s3); padding-top:var(--s2); border-top:1px solid var(--sky); }
@@ -568,7 +548,6 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
         <div class="btns">
           <a class="btn btn--brass" href="morocco.html">See Morocco, March 2027</a>
           <a class="btn btn--ghost" href="#journeys">Upcoming journeys</a>
-          <a class="btn btn--ghost" href="#session">Info session</a>
         </div>
       </div>
       <figure class="hero__photo">
@@ -747,27 +726,6 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
       <div class="fact"><dt>Pace</dt><dd>Walkable<small>Gentle hikes, no boots required</small></dd></div>
     </dl>
     <div class="btns rv"><a class="btn btn--brass" href="morocco.html">Read the day-by-day itinerary</a><a class="btn" href="#join">Join the interest list</a></div>
-  </div>
-</section>
-
-<section class="section section--tight" id="session">
-  <div class="shell">
-    <div class="session rv">
-      <div>
-        <p class="eyebrow eyebrow--plain">Information session &middot; on Zoom</p>
-        <h3>Tuesday, September 15 &middot; 5:00 PM Pacific</h3>
-        <p>An hour with Nicole to walk through the itinerary day by day, compare the 7- and 9-day options, talk through costs and what&rsquo;s included, and answer any questions you may have.</p>
-        <p class="session__note">Leave your name and email and we&rsquo;ll send you the Zoom link and a reminder the day before.</p>
-      </div>
-      <form class="session__form" data-fs-form action="https://formspree.io/f/mvkplkdq" method="POST">
-        <input name="name" type="text" placeholder="Your name" aria-label="Your name" autocomplete="name">
-        <input name="email" type="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
-        <input type="hidden" name="_subject" value="Zoom link — Morocco info session, September 15">
-        <p hidden aria-hidden="true"><label>Leave this empty <input name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
-        <button class="btn btn--brass" type="submit">Send me the Zoom link</button>
-        <p class="session__status" data-fs-status hidden role="status"></p>
-      </form>
-    </div>
   </div>
 </section>
 
