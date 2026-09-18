@@ -116,18 +116,16 @@ so live text would have fallen back to a default face.
 When you have photographs from either country, a `<figure class="shot">` gallery can
 be added to those pages the same way as on Morocco. The globes can stay in the hero.
 
-## The information session
+## The information session (removed)
 
-The home page and the Morocco page both carry a panel announcing the Zoom session on
-Tuesday, September 15 at 5:00 PM Pacific, with a short sign-up form. Search either page
-for `id="session"` to find it. The two copies are identical — edit both.
+The home page and the Morocco page used to carry a panel announcing a Zoom
+information session. That date has passed, and the panel, its hero button, and its
+now-unused CSS have been removed from both pages.
 
-Like the main interest form, it opens the visitor's email app with a message ready
-to send to certainlatitude@gmail.com — so sign-ups arrive as ordinary emails.
-
-**After the session, delete this block from both pages**, or the site will keep
-advertising a date that has passed. Remove the whole `<section ... id="session">`
-element and the "Info session · Sept 13" button in each hero.
+If you run another info session in the future, the cleanest approach is to rebuild
+this as a small self-contained section (heading, date/time, one paragraph, and a
+sign-up form posting to Formspree) rather than reviving the old one, since the old
+markup is now gone from the page templates.
 
 ## Pricing and inclusions
 
@@ -200,3 +198,85 @@ is drawn in code, so there is no image file to upload and nothing to break.
 
 To swap in a different concept, search any `.html` file for `brand__mark` (header)
 or `footer__star` (footer) and replace the `<svg>…</svg>` block.
+
+## SEO metadata (added September 2026)
+
+Every page now carries a full set of search and social metadata:
+
+- **Title & description** — tuned per page around your target search terms
+  (women's travel, women's adventure travel, midlife travel, second act, empty
+  nest, freedom to travel, plus the destination and city names).
+- **Meta keywords** — included for completeness, though modern search engines
+  largely ignore this tag; the real SEO value is in the titles, descriptions,
+  and the visible page copy itself, which already reads naturally.
+- **Open Graph + Twitter Card tags** — control how the site looks when a link
+  is shared on Facebook, Slack, iMessage, LinkedIn, or X. Each page now has a
+  proper 1200×630 preview image (see `images/social/`) instead of showing
+  nothing.
+- **Structured data (JSON-LD)** — a `TravelAgency` schema on the home page and
+  a `TouristTrip` schema on the Morocco page, which helps Google understand
+  what kind of business this is and can support richer search results over
+  time.
+- **`robots.txt` and `sitemap.xml`** — new files at the root of the site,
+  telling search engines the site is open to indexing and listing all five
+  pages. Neither existed before.
+
+### One thing to do once the domain is live
+
+**Submit the site to Google Search Console** (search.google.com/search-console
+— free) and Bing Webmaster Tools. Verify ownership of certainlatitude.com, then
+submit `https://www.certainlatitude.com/sitemap.xml`. This is what actually
+gets a new site crawled and indexed — none of the metadata above does that on
+its own, it only controls how the site is *described* once found.
+
+### A note on "travel for moms"
+
+That phrase is included in the keywords and description as requested, but
+it's worth knowing it can point in two different directions: people searching
+it are often looking for family trips *with* children, which is the opposite
+of what Certain Latitude offers. It's included because you asked for it and it
+isn't wrong for an empty-nester audience — just be aware it may also attract
+some searches for the wrong kind of trip.
+
+### If a page's core content changes
+
+The title, description, and keywords are written by hand for the copy as it
+stood in September 2026. If the itinerary, dates, or positioning change
+significantly later, these should be revisited so they still match what the
+page actually says.
+
+## Venmo payment (added September 2026)
+
+A "Pay Here" link now sits at the end of the main navigation bar on every page,
+linking to `morocco.html#pay` — it jumps straight to the Venmo card. The nav is
+duplicated across all five HTML files (there's no shared template anymore), so
+if you ever change this link, update it in all five.
+
+
+The Morocco page's "Prices, payment and refunds" section ends with a "How to pay"
+entry and a "Pay via Venmo" button, pointing to `@certainlatitude`. Search for
+`venmo-pay` in `morocco.html` to find it.
+
+This is deliberately button-only, with no QR code displayed publicly, and the
+copy asks people to confirm their place with Nicole before paying — the site
+isn't meant to be a self-serve checkout. Two QR image files
+(`images/venmo-qr.png` and `@2x`) are still in the images folder, unused, in
+case you want to bring the QR code back later.
+
+If the Venmo account ever changes, update the link on the button — search for
+`venmo.com/code` in `morocco.html` — and regenerate the QR files if you restore
+the image version.
+
+There is also a ready-to-send email template for confirmed travelers, with the
+same payment link and a reminder about the deposit deadline and the required
+Venmo note. Ask Claude to regenerate it if the price, dates, or terms change.
+
+**Worth knowing, not a website issue:** Venmo's personal accounts are built for
+paying friends, not for collecting business payments — there's a separate "Venmo
+for Business" profile type with its own terms. Using a personal account for
+$750 client deposits works in practice, but it means payments carry none of the
+buyer protection a real payment processor (Stripe, Square, PayPal Business) would
+offer, and there's no automatic record tying a payment to a specific traveler or
+trip — that's why the page asks people to put their name and "Morocco deposit" in
+the Venmo note. Worth keeping a manual list of who's paid, since Venmo won't do
+that bookkeeping for you.

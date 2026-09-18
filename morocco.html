@@ -247,6 +247,15 @@ p{ margin:0 0 1.1em; }
 @media(min-width:700px){ .cards{ grid-template-columns:repeat(2,1fr); } }
 @media(min-width:1000px){ .cards--3{ grid-template-columns:repeat(3,1fr); } }
 .card{ background:var(--white); border:1px solid var(--sky); padding:var(--s3); }
+.venmo-pay{
+  margin-top:var(--s4); max-width:46ch; margin-inline:auto;
+  text-align:center; display:flex; flex-direction:column; align-items:center;
+}
+.venmo-pay p{ margin:0 0 1rem; }
+.venmo-pay__label{
+  font-family:var(--mono); font-weight:600; font-size:.72rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--cobalt); margin-bottom:.5rem !important;
+}
 .section--mist .card{ background:var(--white); }
 .card h3{ font-size:1.35rem; margin-bottom:.5rem; }
 @media(min-width:1000px){ .card--wide{ grid-column:1 / -1; } }
@@ -534,6 +543,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
       <a href="uzbekistan.html">Uzbekistan 2029</a>
       <a href="about.html">About</a>
       <a href="index.html#join">Join the list</a>
+      <a href="morocco.html#pay">Make a Payment</a>
     </nav>
   </div>
 </header>
@@ -993,7 +1003,13 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
       <div><dt>Transfers</dt><dd>You may pass your place to someone else who meets the group criteria up to 45 days before departure, at no charge.</dd></div>
       <div><dt>If we cancel</dt><dd>If the group does not reach ten travelers, we will let you know as early as we can and refund everything you have paid, including the deposit.</dd></div>
       <div><dt>Insurance</dt><dd>Personal cancellations &mdash; illness, a family emergency &mdash; are covered by travel insurance, which is required of every traveler. Buy your policy when you pay the deposit rather than later: most &ldquo;cancel for any reason&rdquo; coverage must be purchased within 14&ndash;21 days of your first trip payment. Compare policies at <a href="https://www.squaremouth.com/22602" target="_blank" rel="noopener">Squaremouth</a>.</dd></div>
+      <div><dt>How to pay</dt><dd>Once Nicole has confirmed your place, deposits and balances can be paid by Venmo, <a href="mailto:certainlatitude@gmail.com">check, or bank transfer</a> &mdash; whichever is easiest. To pay by Venmo, use <strong>@certainlatitude</strong> and include your <strong>full name and &ldquo;Morocco deposit&rdquo;</strong> in the note so your payment can be matched to your place.</dd></div>
     </dl>
+    <div class="card venmo-pay" id="pay">
+      <p class="venmo-pay__label">Pay by Venmo</p>
+      <p>Please confirm your place with Nicole first &mdash; this isn&rsquo;t a substitute for joining the interest list. Once you have, use the button below to pay securely.</p>
+      <a class="btn btn--brass" href="https://venmo.com/code?user_id=4688715452516086420" target="_blank" rel="noopener">Pay via Venmo &mdash; @certainlatitude</a>
+    </div>
   </div>
 </section>
 
