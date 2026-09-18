@@ -379,6 +379,7 @@ table.meals td:last-child{ color:var(--ink-70); }
 .footer__grid{ display:grid; gap:var(--s4); grid-template-columns:1fr; }
 @media(min-width:760px){ .footer__grid{ grid-template-columns:1.4fr 1fr 1fr; gap:var(--s5); } }
 .footer h4{ font-family:var(--mono); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--brass-lt); font-weight:400; margin-bottom:var(--s2); }
+.footer__pay{ margin-bottom:var(--s3); }
 .footer ul{ list-style:none; margin:0; padding:0; display:grid; gap:.55rem; font-size:.95rem; }
 .footer__mark{ font-family:var(--display); font-size:2rem; color:var(--white); line-height:1; }
 .footer__mark small{ display:block; font-family:var(--mono); font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--brass-lt); margin-top:.6rem; }
@@ -496,6 +497,60 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
   .main--morocco #gallery .eyebrow{ display:none; }   /* redundant once it opens the page */
 }
 
+/* ---------- site search ---------- */
+.search-toggle{
+  display:inline-flex; align-items:center; gap:.45rem; background:none; border:0; cursor:pointer;
+  color:var(--ink-70); padding:.35rem .2rem; font-family:var(--mono); font-size:.7rem;
+  letter-spacing:.13em; text-transform:uppercase;
+}
+.search-toggle:hover{ color:var(--cobalt); }
+.search-toggle svg{ flex-shrink:0; }
+@media(max-width:480px){ .search-toggle__label{ display:none; } }
+
+.search-overlay{
+  position:fixed; inset:0; z-index:100; background:rgba(14,42,74,.55);
+  display:flex; align-items:flex-start; justify-content:center;
+  padding:11vh 1.25rem 1.25rem;
+}
+.search-overlay[hidden]{ display:none; }
+.search-panel{
+  width:100%; max-width:640px; background:var(--paper); border:1px solid var(--sky);
+  box-shadow:0 30px 70px -20px rgba(14,42,74,.45); max-height:76vh; display:flex; flex-direction:column;
+}
+.search-panel__head{
+  display:flex; align-items:center; gap:.8rem; padding:1.1rem 1.3rem;
+  border-bottom:1px solid var(--sky); flex-shrink:0;
+}
+.search-panel__input{
+  flex:1; border:0; background:none; font:inherit; font-size:1.05rem; color:var(--ink);
+  padding:.2rem 0; outline:none;
+}
+.search-panel__input::placeholder{ color:var(--ink-45); }
+.search-panel__close{
+  background:none; border:0; cursor:pointer; font-size:1.5rem; line-height:1; color:var(--ink-45);
+  padding:.1rem .3rem;
+}
+.search-panel__close:hover{ color:var(--ink); }
+.search-panel__results{ overflow-y:auto; padding:.5rem; }
+.search-panel__hint{ padding:1.1rem .8rem; color:var(--ink-45); font-size:.9rem; margin:0; }
+.search-result{
+  display:block; text-decoration:none; color:inherit; padding:.85rem .8rem;
+  border-radius:2px; border-bottom:1px solid var(--sky);
+}
+.search-result:last-child{ border-bottom:0; }
+.search-result:hover, .search-result.is-active{ background:var(--white); }
+.search-result__page{
+  font-family:var(--mono); font-weight:600; font-size:.66rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--cobalt); margin-bottom:.3rem;
+}
+.search-result__title{ font-family:var(--display); font-size:1.15rem; line-height:1.2; color:var(--ink); }
+.search-result__snippet{ font-size:.88rem; color:var(--ink-70); margin-top:.3rem; line-height:1.4; }
+.search-result mark{ background:rgba(199,96,26,.22); color:inherit; border-radius:1px; }
+@media(max-width:620px){
+  .search-overlay{ padding:6vh .75rem .75rem; }
+  .search-panel__input{ font-size:1rem; }
+}
+
 </style>
 </head>
 <body>
@@ -510,9 +565,32 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
       <a href="about.html">About</a>
       <a href="index.html#join">Join the list</a>
       <a href="morocco.html#pay">Make a Payment</a>
+    <button class="search-toggle" type="button" aria-label="Search the site" aria-haspopup="dialog" aria-controls="search-overlay" data-search-open>
+      <svg width="17" height="17" viewBox="0 0 18 18" aria-hidden="true" focusable="false">
+        <circle cx="7.6" cy="7.6" r="6.1" fill="none" stroke="currentColor" stroke-width="1.7"/>
+        <line x1="12.1" y1="12.1" x2="16.5" y2="16.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+      <span class="search-toggle__label">Search</span>
+    </button>
     </nav>
   </div>
 </header>
+<div class="search-overlay" id="search-overlay" hidden>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search Certain Latitude">
+    <div class="search-panel__head">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false">
+        <circle cx="7.6" cy="7.6" r="6.1" fill="none" stroke="var(--ink-45)" stroke-width="1.7"/>
+        <line x1="12.1" y1="12.1" x2="16.5" y2="16.5" stroke="var(--ink-45)" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+      <input type="text" id="search-input" class="search-panel__input" placeholder="Search itineraries, prices, FAQs&hellip;" autocomplete="off" spellcheck="false" aria-label="Search Certain Latitude">
+      <button class="search-panel__close" type="button" aria-label="Close search" data-search-close>&times;</button>
+    </div>
+    <div class="search-panel__results" id="search-results">
+      <p class="search-panel__hint">Try &ldquo;deposit,&rdquo; &ldquo;Chefchaouen,&rdquo; &ldquo;solo,&rdquo; or &ldquo;cancel.&rdquo;</p>
+    </div>
+  </div>
+</div>
+
 <main id="main" class="main--argentina">
 <section class="creed">
   <div class="creed__tile" aria-hidden="true"></div>
@@ -560,7 +638,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="why">
   <div class="shell">
     <div class="grid2 grid2--lead">
       <div class="rv">
@@ -575,7 +653,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
   </div>
 </section>
 
-<section class="section section--mist">
+<section class="section section--mist" id="scouting">
   <div class="shell">
     <div class="rv" style="margin-bottom:var(--s4)">
       <p class="eyebrow">Places we&rsquo;re scouting</p>
@@ -622,7 +700,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
   </div>
 </section>
 
-<section class="section section--ink">
+<section class="section section--ink" id="rules">
   <div class="shell">
     <div class="grid2 grid2--lead">
       <div class="rv">
@@ -697,6 +775,7 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
       </div>
       <div>
         <h4>Get in touch</h4>
+        <a class="btn btn--brass footer__pay" href="morocco.html#pay">Make a Payment</a>
         <ul>
           <li><a href="mailto:certainlatitude@gmail.com">certainlatitude@gmail.com</a></li>
           <li><a href="index.html#join">Join the interest list</a></li>
@@ -834,6 +913,144 @@ table.meals th, .footer h4, .footer__base, .footer__mark small,
   document.querySelectorAll(".nav__links a").forEach(function (a) {
     if (a.getAttribute("href") === here) a.setAttribute("aria-current", "page");
   });
+var SEARCH_INDEX = [["Certain Latitude", "index.html", "Small-group journeys for women embarking upon our next act. First trip: Morocco, March 2027.", "Home", false], ["Upcoming journeys", "index.html#journeys", "Morocco in March 2027, Argentina in 2028, and Uzbekistan in 2029 — where we're going next.", "Home", false], ["Who we are, what to expect, meet our founder", "index.html#about", "We are a travel company dedicated to women embarking upon our next act, and how we travel.", "Home", false], ["What makes us stand out", "index.html#stand-out", "10–14 travelers, cozy hotels with local character, unscheduled time, and shared meals.", "Home", false], ["Morocco — March 7–18, 2027", "morocco.html", "7–9 days from Tangier to Marrakech: the crossroads of Europe and Africa, Chefchaouen, Fes and the Red City.", "Morocco", false], ["Six cities, north to south", "morocco.html#route", "Tangier, Chefchaouen, Fes, the Middle Atlas, Casablanca and Marrakech, with a night in Paris to start.", "Morocco", false], ["What you'll remember", "morocco.html#itinerary", "The highlights of the journey, from storied Tangier to picturesque Chefchaouen and the Red City.", "Morocco", false], ["The whole itinerary, day by day", "morocco.html#itinerary", "Where we sleep, what we see, and how each day of the trip unfolds.", "Morocco", false], ["San Francisco → Paris", "morocco.html#day-san-francisco-paris", "Evening nonstop from SFO to Paris-Charles de Gaulle, arriving the morning of Monday, March 8.", "Morocco · Day by day", true], ["A night in Paris", "morocco.html#day-a-night-in-paris", "Morning arrival at Charles de Gaulle; transfer into the city and settle in.", "Morocco · Day by day", true], ["Paris → Casablanca → Tangier", "morocco.html#day-paris-casablanca-tangier", "Morning flight from Charles de Gaulle to Casablanca, then the high-speed train to Tangier.", "Morocco · Day by day", true], ["Tangier → Chefchaouen", "morocco.html#day-tangier-chefchaouen", "The kasbah and the Kasbah Museum in the former sultan's palace, then the medina's Petit and Grand Socco.", "Morocco · Day by day", true], ["Chefchaouen — the blue city", "morocco.html#day-chefchaouen-the-blue-city", "A photography walk through the blue medina, Uta el-Hammam square, and the Kasbah Museum.", "Morocco · Day by day", true], ["Chefchaouen → Fes el-Jdid", "morocco.html#day-chefchaouen-fes-el-jdid", "Early departure by private bus for Fes, about four hours, arriving in time for lunch.", "Morocco · Day by day", true], ["Fes — the ancient medina", "morocco.html#day-fes-the-ancient-medina", "A private guided tour of the Chouara tanneries, viewed from the leather-shop terraces above the dye vats.", "Morocco · Day by day", true], ["The Middle Atlas — cedars and highlands", "morocco.html#day-the-middle-atlas-cedars-highlands", "Into the Middle Atlas to Ifrane, the alpine-looking hill station the French built in the 1930s.", "Morocco · Day by day", true], ["Fes → Casablanca", "morocco.html#day-fes-casablanca", "The potters' quarter at Ain Nokbi and the hand-chiselled zellige mosaic that gives Fes its signature.", "Morocco · Day by day", true], ["Casablanca → Marrakech", "morocco.html#day-casablanca-marrakech", "An unhurried breakfast, then the Museum of Moroccan Judaism before the train south.", "Morocco · Day by day", true], ["Marrakech — a full day in the Red City", "morocco.html#day-marrakech-a-full-day-in-the-red-city", "A guided walk through the medina souks, then the Koutoubia Mosque and the Bahia Palace.", "Morocco · Day by day", true], ["Marrakech → home", "morocco.html#day-marrakech-home", "A relaxed final breakfast at the riad before the journey home.", "Morocco · Day by day", true], ["Flights and getting there", "morocco.html#flights", "How we get to Tangier and home from Marrakech, including the night in Paris.", "Morocco", false], ["Good to know — the practical part", "morocco.html#practical", "Transport, time changes, currency, tipping, language, dress and weather in March.", "Morocco", false], ["Prices, payment and refunds", "morocco.html#booking", "$3,900–$4,500 per traveler. $750 deposit due November 1, 2026. Cancellation and insurance terms.", "Morocco", false], ["Make a payment", "morocco.html#pay", "Pay your Morocco deposit or balance by Venmo, once your place is confirmed.", "Morocco", false], ["Morocco in pictures", "morocco.html#gallery", "Photographs from Chefchaouen, Fes, Tangier and Marrakech.", "Morocco", false], ["Argentina — 2028", "argentina.html", "The southern mirror of the Morocco parallel: Buenos Aires, wine country and Patagonia. Dates in development.", "Argentina", false], ["The same parallel, the other hemisphere", "argentina.html#why", "Why Argentina sits at nearly the same latitude as Morocco, on the other side of the equator.", "Argentina", false], ["Places we're scouting", "argentina.html#scouting", "Buenos Aires, Jewish Buenos Aires, Mendoza and the Uco Valley, Salta, Patagonia and Iguazú.", "Argentina", false], ["The Certain Latitude rules travel with us", "argentina.html#rules", "10–14 travelers, cozy central locations, and ample unscheduled time — what stays the same trip to trip.", "Argentina", false], ["Uzbekistan — 2029", "uzbekistan.html", "Along the Silk Road through Samarkand, Bukhara and Khiva. Dates in development.", "Uzbekistan", false], ["Because the blue keeps going east", "uzbekistan.html#why", "The cornflower blue of Chefchaouen and the cobalt of Samarkand are cousins.", "Uzbekistan", false], ["Places we're scouting", "uzbekistan.html#scouting", "Tashkent, Samarkand, Bukhara, and the craft valleys and desert nights still being decided.", "Uzbekistan", false], ["The Certain Latitude rules travel with us", "uzbekistan.html#rules", "10–14 travelers, cozy central locations, and ample unscheduled time — what stays the same trip to trip.", "Uzbekistan", false], ["About Certain Latitude", "about.html", "Freedom to Explore — small-group travel for women in midlife, led by founder Nicole Sorger.", "About", false], ["Latitude, both ways", "about.html#manifesto", "Latitude demarcates our place in the world, and the room we give ourselves in our next act.", "About", false], ["What makes us stand out", "about.html#stand-out", "10–14 travelers, cozy hotels with local character, unscheduled time, and shared meals.", "About", false], ["Meet our founder, Nicole Sorger", "about.html#founder", "A world traveler and writer with more than two decades of experience teaching global history.", "About", false], ["How fit do I need to be?", "about.html#faq-how-fit-do-i-need-to-be", "Comfortable walking is the requirement — medinas are cobbled and best seen on foot.", "About · FAQ", true], ["Rooms, and sharing", "about.html#faq-rooms-and-sharing", "Coming solo is the norm — we'll match you with a roommate, or add a single supplement for a room of your own.", "About · FAQ", true], ["What's included, and what isn't", "about.html#faq-what-s-included-and-what-isn-t", "Included: all hotels, meals, domestic travel, guides, tips and entrance fees.", "About · FAQ", true], ["Food preferences and dietary needs", "about.html#faq-food-preferences-and-dietary-needs", "Vegetarian, dairy-free, gluten-free and kosher style are all available options.", "About · FAQ", true], ["What if I have to cancel?", "about.html#faq-what-if-i-have-to-cancel", "Cancel in writing on or before December 1, 2026 for a full refund. Terms for after that date.", "About · FAQ", true], ["How do I hold a place?", "about.html#faq-how-do-i-hold-a-place", "Join the interest list, then hold your place with a $750 deposit once you're offered a spot.", "About · FAQ", true], ["Who will my fellow travelers be?", "about.html#faq-who-will-my-fellow-travelers-be", "Seasoned, easy-going travelers ready to expand their circle of fellow explorers.", "About · FAQ", true]];
+
+  /* --- Site search --- */
+  (function () {
+    var overlay = document.getElementById("search-overlay");
+    var input = document.getElementById("search-input");
+    var results = document.getElementById("search-results");
+    var openBtns = document.querySelectorAll("[data-search-open]");
+    var closeBtns = document.querySelectorAll("[data-search-close]");
+    if (!overlay || !input || !results) return;
+
+    var activeIndex = -1;
+    var currentMatches = [];
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c];
+      });
+    }
+    function highlight(text, q) {
+      if (!q) return escapeHtml(text);
+      var i = text.toLowerCase().indexOf(q.toLowerCase());
+      if (i === -1) return escapeHtml(text);
+      return (
+        escapeHtml(text.slice(0, i)) +
+        "<mark>" + escapeHtml(text.slice(i, i + q.length)) + "</mark>" +
+        escapeHtml(text.slice(i + q.length))
+      );
+    }
+
+    function openSearch() {
+      overlay.hidden = false;
+      document.body.style.overflow = "hidden";
+      input.focus();
+    }
+    function closeSearch() {
+      overlay.hidden = true;
+      document.body.style.overflow = "";
+    }
+
+    openBtns.forEach(function (b) { b.addEventListener("click", openSearch); });
+    closeBtns.forEach(function (b) { b.addEventListener("click", closeSearch); });
+    /* Close the panel on any result click. For a same-page anchor this matters:
+       the browser doesn't reload, so nothing else would ever dismiss it. */
+    results.addEventListener("click", function (e) {
+      if (e.target.closest(".search-result")) closeSearch();
+    });
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) closeSearch();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "/" && overlay.hidden) {
+        var tag = (document.activeElement && document.activeElement.tagName) || "";
+        if (tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "SELECT") {
+          e.preventDefault();
+          openSearch();
+        }
+      }
+      if (!overlay.hidden) {
+        if (e.key === "Escape") closeSearch();
+        if (e.key === "ArrowDown") { e.preventDefault(); moveActive(1); }
+        if (e.key === "ArrowUp") { e.preventDefault(); moveActive(-1); }
+        if (e.key === "Enter") {
+          var target = currentMatches[activeIndex] || currentMatches[0];
+          if (target) { window.location.href = target[1]; }
+        }
+      }
+    });
+
+    function moveActive(delta) {
+      var links = results.querySelectorAll(".search-result");
+      if (!links.length) return;
+      activeIndex = (activeIndex + delta + links.length) % links.length;
+      links.forEach(function (l, i) { l.classList.toggle("is-active", i === activeIndex); });
+      links[activeIndex].scrollIntoView({ block: "nearest" });
+    }
+
+    function render(matches, q) {
+      currentMatches = matches;
+      activeIndex = -1;
+      if (!q) {
+        results.innerHTML = '<p class="search-panel__hint">Try &ldquo;deposit,&rdquo; &ldquo;Chefchaouen,&rdquo; &ldquo;solo,&rdquo; or &ldquo;cancel.&rdquo;</p>';
+        return;
+      }
+      if (!matches.length) {
+        results.innerHTML = '<p class="search-panel__hint">No matches. Try a different word, or ' +
+          '<a href="mailto:certainlatitude@gmail.com">email us</a> and we will answer directly.</p>';
+        return;
+      }
+      results.innerHTML = matches.map(function (m) {
+        return (
+          '<a class="search-result" href="' + m[1] + '">' +
+          '<div class="search-result__page">' + escapeHtml(m[3]) + "</div>" +
+          '<div class="search-result__title">' + highlight(m[0], q) + "</div>" +
+          '<div class="search-result__snippet">' + highlight(m[2], q) + "</div>" +
+          "</a>"
+        );
+      }).join("");
+    }
+
+    input.addEventListener("input", function () {
+      var q = input.value.trim();
+      if (!q) { render([], ""); return; }
+      var ql = q.toLowerCase();
+      var scored = [];
+      SEARCH_INDEX.forEach(function (entry) {
+        var title = entry[0].toLowerCase();
+        var snippet = entry[2].toLowerCase();
+        var page = entry[3].toLowerCase();
+        var score = -1;
+        if (title.indexOf(ql) !== -1) score = 0;
+        else if (page.indexOf(ql) !== -1) score = 1;
+        else if (snippet.indexOf(ql) !== -1) score = 2;
+        if (score !== -1) scored.push([score, entry]);
+      });
+      scored.sort(function (a, b) { return a[0] - b[0]; });
+      render(scored.slice(0, 8).map(function (s) { return s[1]; }), q);
+    });
+
+    /* Open + scroll to an accordion item (itinerary day or FAQ) if the URL
+       points straight at one — from a search result, a bookmark, or any
+       other deep link. */
+    function openAccordionTarget() {
+      var id = location.hash.replace("#", "");
+      if (!id) return;
+      var el = document.getElementById(id);
+      if (!el || !el.classList.contains("day")) return;
+      el.classList.add("is-open");
+      var btn = el.querySelector(".day__btn");
+      var sign = el.querySelector(".day__sign");
+      if (btn) btn.setAttribute("aria-expanded", "true");
+      if (sign) sign.textContent = "\u2013";
+      el.scrollIntoView({ block: "start" });
+    }
+    openAccordionTarget();
+    window.addEventListener("hashchange", openAccordionTarget);
+  })();
+
 })();
 
 </script>

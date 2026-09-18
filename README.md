@@ -280,3 +280,33 @@ offer, and there's no automatic record tying a payment to a specific traveler or
 trip — that's why the page asks people to put their name and "Morocco deposit" in
 the Venmo note. Worth keeping a manual list of who's paid, since Venmo won't do
 that bookkeeping for you.
+
+## Site search
+
+Every page has a search button in the main nav (magnifying-glass icon, next to
+"Make a Payment") that opens a search overlay. Type a few letters and it filters
+an on-page index — no server, no external service, works the moment the site is
+live. Press `/` anywhere on the page to open it, `Esc` to close it, arrow keys to
+move between results, `Enter` to go to the top one.
+
+**How it works:** each page carries an identical copy of `SEARCH_INDEX`, a
+JavaScript array near the bottom of the file — search for `var SEARCH_INDEX` to
+find it. Each entry is `[title, url, snippet, page label, isSubsection]`. Typing
+scores matches by where the text hits (title match ranks above a snippet match)
+and shows the best 8.
+
+Itinerary days (Morocco) and FAQ answers (About) can be linked to directly and
+will auto-expand when opened this way — search for `openAccordionTarget` to see
+how. If you add a new day or FAQ question, give its `<article class="day">` a
+unique `id`, then add a matching entry to `SEARCH_INDEX` with a URL like
+`morocco.html#your-new-id`.
+
+**Because the index is duplicated across all five files, any change has to be
+made five times** — there's no shared template to edit once. Keep them in sync
+by checking after any edit:
+
+```
+grep -c "your search text" index.html morocco.html argentina.html uzbekistan.html about.html
+```
+
+All five counts should match.
